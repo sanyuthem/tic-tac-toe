@@ -20,7 +20,6 @@ export default function AuthContextProviderMain({ children }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((res) => {
         const user = res.user;
-
         if (user.emailVerified === false) {
           alert("Please verify your account to use the app.");
         } else {
@@ -29,7 +28,7 @@ export default function AuthContextProviderMain({ children }) {
             "user",
             JSON.stringify({ email: user.email, name: user.displayName })
           );
-          navigate("/home");
+          navigate("/home"); // Navigate to home page
         }
       })
       .catch((err) => alert(err.message));
@@ -45,7 +44,7 @@ export default function AuthContextProviderMain({ children }) {
           "user",
           JSON.stringify({ email: user.email, name: user.displayName })
         );
-        navigate("/home");
+        navigate("/home"); // Navigate to home page
       })
       .catch((err) => alert(`Google Login Error: ${err.message}`));
   };
@@ -76,18 +75,22 @@ export default function AuthContextProviderMain({ children }) {
 
   // Automatically log in if user exists in localStorage
   useEffect(() => {
-    if (localStorage.getItem("user") !== null) {
-      setUser(JSON.parse(localStorage.getItem("user")));
-      navigate("/home");
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+      navigate("/home"); // Automatically navigate to home if user is already logged in
     }
-  }, []);
+  }, [navigate]);
 
   // Logout
   const logout = () => {
-    signOut(auth);
-    setUser(null);
-    localStorage.removeItem("user");
-    navigate("/");
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        localStorage.removeItem("user");
+        navigate("/"); // Navigate to login page after logout
+      })
+      .catch((err) => alert(err.message));
   };
 
   return (
