@@ -25,24 +25,10 @@ export default function Home() {
   return (
     <div className="relative">
       {/* Background */}
-      <div className="area absolute inset-0 z-0 bg-gradient-to-r from-blue-300 to-purple-500 h-screen">
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
-
+      
       {/* Main Content */}
-      <div className="relative z-10">
-        <h3 className="font-rubik text-6xl font-extrabold text-red-600 py-5">Tic Tac Toe</h3>
+      <div className="relative z-10  mb-14 overflow-hidden ">
+        <h3 className="font-rubik text-6xl font-extrabold text-red-600 py-8 md:py-1 back bg-fixed">Tic Tac Toe</h3>
         
         <button
           onClick={logout}
@@ -55,14 +41,14 @@ export default function Home() {
 
         <button
           onClick={resetGame}
-          className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
+          className="relative inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800"
         >
           <span className="relative px-4 py-1 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
             Reset
           </span>
         </button>
 
-        <div className="flex flex-col md:flex-row gap-[100px]">
+        <div className="flex flex-col md:flex-row gap-[10px] md:gap-[10px] xl:gap-[100px]">
           <Board />
           <Chat />
         </div>

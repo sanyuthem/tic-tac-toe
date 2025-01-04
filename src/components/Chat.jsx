@@ -14,9 +14,9 @@ export default function Chat() {
   };
 
   return (
-    <div className="mt-[30px] md:ml-0 ml-14">
+    <div className="mt-[30px] md:ml-10 ml-1 lg:ml-14 ">
       <h3 className="text-2xl font-semibold text-center mb-4 mr-5 md:mr-0 text-black">Chat</h3>
-      <div className="h-[300px] w-[250px] overflow-y-scroll border-4 border-red-500  p-2 rounded-lg shadow-lg ">
+      <div className="h-[300px] w-[250px] md:h-[200px] md:w-[250px] overflow-y-scroll border-4 border-red-500  p-2 rounded-lg shadow-lg ">
         {Object.entries(chatMessages).map(([key, msg]) => (
           <div key={key} className="mb-2 text-gray-800">
             <strong className="text-black font-semibold">{msg.user}: </strong>
